@@ -14,7 +14,7 @@ router.get("/movies", (req, res, next) => {
   const limit = req.query.limit || 12;
   const offset = req.query.offset || 0;
   Movie.findAndCountAll({ limit, offset })
-    .then(list => response.send({ movies: list.rows, total: list.count }))
+    .then(list => res.send({ movies: list.rows, total: list.count }))
     .catch(err => next(err));
 });
 
